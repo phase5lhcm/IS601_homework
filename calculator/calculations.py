@@ -17,7 +17,7 @@ class Calculations:
     @classmethod
     def get_history(cls) -> List[Calculation]:
         return cls.history
-    
+
     """ Use to clear history list"""
     @classmethod
     def clear_history(cls):

@@ -1,0 +1,29 @@
+# Ignore virtual environments
+venv/
+.env/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore log files
+*.log
+
+# Ignore system files (Mac & Linux)
+.DS_Store
+Thumbs.db
+
+# Ignore dependency files
+*.egg-info/
+dist/
+build/
+
+# Ignore IDE settings
+.vscode/
+.idea/
+*.swp
+
+# Ignore compiled files
+*.o
+*.out

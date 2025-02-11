@@ -1,5 +1,7 @@
 from typing import List, Optional
+
 from calculator.calculation import calculation
+
 
 class Calculations:
     history: List[Calculation] = []

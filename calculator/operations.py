@@ -1,6 +1,7 @@
 """Defines basic math operations """
 from decimal import Decimal
 
+
 def add(a: Decimal, b: Decimal) -> Decimal:
     """Use to perform the sum of two numbers """
     return a + b

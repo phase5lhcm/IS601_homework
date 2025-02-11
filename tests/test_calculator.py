@@ -1,7 +1,7 @@
 import pytest
 from decimal import Decimal
-from calculator.calculator import Calculator
-from calculator.calculations import Calculations
+from calculator import Calculator
+from calculator import Calculations
 
 @pytest.mark.parametrize("a, b, expected", [
     (Decimal(2), Decimal(3), Decimal(5)),

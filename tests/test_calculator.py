@@ -1,44 +1,41 @@
 import pytest
 from decimal import Decimal
-from calculator.calculation import Calculation
+from faker import Faker
 from calculator.calculator import Calculator
-from calculator.calculations import Calculations
 from calculator.operations import add, subtract, multiply, divide
 
+faker = Faker()
+
 @pytest.mark.parametrize("a, b, expected", [
-    (Decimal(2), Decimal(3), Decimal(5)),
-    (Decimal(-1), Decimal(5), Decimal(4)),
-    (Decimal(0), Decimal(0), Decimal(0))
+    (Decimal(faker.random_int(min=-100, max=100)), Decimal(faker.random_int(min=-100, max=100))) for _ in range(5)
 ])
-def test_add(a,b,expected):
+def test_add(a,b):
+    expected = a + b
     assert Calculator.add(a,b) == expected
 
 @pytest.mark.parametrize("a,b,expected",[
-    (Decimal(5), Decimal(3), Decimal(2)),
-    (Decimal(10), Decimal(4), Decimal(6)),
-    (Decimal(-2), Decimal(-2), Decimal(0))
+ (Decimal(faker.random_int(min=-100, max=100)), Decimal(faker.random_int(min=-100, max=100))) for _ in range(5)
 ])
 
-def test_subtract(a,b,expected):
+def test_subtract(a,b):
+    expected = a - b
     assert Calculator.subtract(a,b) == expected
 
 @pytest.mark.parametrize("a,b,expected",[
-    (Decimal(9), Decimal(3), Decimal(27)),
-    (Decimal(5), Decimal(2.5), Decimal(12.5)),
-    (Decimal(-12), Decimal(4), Decimal(-48))
+    (Decimal(faker.random_int(min=-20, max=20)), Decimal(faker.random_int(min=-20, max=20))) for _ in range(5)
 ])
 
-def test_multiply(a,b,expected):
+def test_multiply(a,b):
+    expected = a * b
     assert Calculator.multiply(a,b) == expected
 
 @pytest.mark.parametrize("a, b, expected", [
-    (Decimal(9), Decimal(3), Decimal(3)),
-    (Decimal(10), Decimal(2), Decimal(5)),
-    (Decimal(-10), Decimal(5), Decimal(-2))
+ (Decimal(faker.random_int(min=-100, max=100)), Decimal(faker.random_int(min=-100, max=100))) for _ in range(5)
 ])
-def test_divide(a, b, expected):
+def test_divide(a, b):
+    expected = a / b
     assert Calculator.divide(a, b) == expected
 
 def test_divide_by_zero():
     with pytest.raises(ZeroDivisionError):
-        Calculator.divide(Decimal(5), Decimal(0))
+        Calculator.divide(Decimal(faker.random_int(min=1, max=100)), Decimal(0))

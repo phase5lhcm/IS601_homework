@@ -1,7 +1,7 @@
+"""This module contains the calculator logic for performing arithmetic operations."""
+
 from typing import List, Optional
-
-from calculator.calculation import calculation
-
+from calculator.calculation import Calculation
 
 class Calculations:
     history: List[Calculation] = []
@@ -10,17 +10,17 @@ class Calculations:
     def add_calculation(cls, calculation:Calculation):
         cls.history.append(calculation)
 
-   """ Use to return the most recen calculation"""
     @classmethod
     def get_latest(cls) -> Optional[Calculation]:
+        """ Use to return the most recent calculation"""
         return cls.history[-1] if cls.history else None
 
-    """Use to to return a list of all calculations"""
     @classmethod
     def get_history(cls) -> List[Calculation]:
+        """Use to to return a list of all calculations"""
         return cls.history
-
-    """ Use to clear history list"""
+    
     @classmethod
     def clear_history(cls):
+        """ Use to clear history list"""
         cls.history.clear()

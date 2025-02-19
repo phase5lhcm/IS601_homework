@@ -1,7 +1,9 @@
 import pytest
 from decimal import Decimal
-from calculator import Calculator
-from calculator import Calculations
+from calculator.calculation import Calculation
+from calculator.calculator import Calculator
+from calculator.calculations import Calculations
+from calculator.operations import add, subtract, multiply, divide
 
 @pytest.mark.parametrize("a, b, expected", [
     (Decimal(2), Decimal(3), Decimal(5)),
@@ -21,9 +23,9 @@ def test_subtract(a,b,expected):
     assert Calculator.subtract(a,b) == expected
 
 @pytest.mark.parametrize("a,b,expected",[
-    (Decimal(9), Decimal(3), Decimal(3)),
-    (Decimal(5), Decimal(2.5), Decimal(2)),
-    (Decimal(-12), Decimal(4), Decimal(-10))
+    (Decimal(9), Decimal(3), Decimal(27)),
+    (Decimal(5), Decimal(2.5), Decimal(12.5)),
+    (Decimal(-12), Decimal(4), Decimal(-48))
 ])
 
 def test_multiply(a,b,expected):
@@ -31,7 +33,7 @@ def test_multiply(a,b,expected):
 
 @pytest.mark.parametrize("a, b, expected", [
     (Decimal(9), Decimal(3), Decimal(3)),
-    (Decimal(5), Decimal(2), Decimal(2.5)),
+    (Decimal(10), Decimal(2), Decimal(5)),
     (Decimal(-10), Decimal(5), Decimal(-2))
 ])
 def test_divide(a, b, expected):

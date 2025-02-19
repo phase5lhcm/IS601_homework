@@ -13,7 +13,7 @@ class Calculation:
         self.operation = operation
 
     def perform(self) -> Decimal:
-    """Use to perform the math operation and returns the result"""
+        """Use to perform the math operation and returns the result"""
         return self.operation(self.a, self.b)
 
     @staticmethod

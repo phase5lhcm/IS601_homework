@@ -25,17 +25,17 @@ class Calculator:
                 module = importlib.import_module(module_name)
                 plugin = module.get_plugin()
                 self.commands[plugin['name']] = plugin['class']
-    def execute(self, command_name, operand1, operand2):
+    def execute(self, command_name, first_operand, second_operand):
         command_class = self.commands.get(command_name)
         if command_class:
-            command = command_class(operand1, operand2)
+            command = command_class(first_operand, second_operand)
             return command.execute()
         else:
             print(f"Unknown command: {command_name}")
 
     
     def repl(self):
-        print("Welcome to Command Pattern Calculator! Type 'menu' to see available commands.")
+        print("Type 'menu' to see available commands.")
         while True:
             user_input = input("\nEnter command (e.g., add 2 3): ")
             if user_input.lower() == 'exit':

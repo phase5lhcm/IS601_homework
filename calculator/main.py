@@ -69,7 +69,7 @@ class Calculator:
                     result = self.execute(command_name, operand1, operand2)
                     logger.info(f"Result: {result}")
                 except ValueError as e:
-                    logger.error(f"Error loading plugin {module_name}: {e}")
+                    logger.error(f"Error loading plugin: {e}")
             else:
                 logger.warning("Invalid input format.")
 

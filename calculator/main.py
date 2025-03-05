@@ -5,6 +5,19 @@ from commands.divide import Divide
 from commands.menu import Menu
 import importlib
 import os
+import logging
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO, 
+    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
+    filename="app.log",  # Saves logs to this file
+    filemode="a" #Append mode
+)
+
+logger = logging.getLogger(__name__)
+logger.info("Calculator App for IS601! Type 'menu' to see available commands or 'exit' to quit.")
+
 
 class Calculator:
     def __init__(self):
@@ -31,15 +44,16 @@ class Calculator:
             command = command_class(first_operand, second_operand)
             return command.execute()
         else:
-            print(f"Unknown command: {command_name}")
+            logger.warning(f"Unknown command: {command_name}")
+            return "Unknown command. Use the menu for assistance"
 
     
     def repl(self):
-        print("Type 'menu' to see available commands.")
+        logger.info("Type 'menu' to see available commands.")
         while True:
             user_input = input("\nEnter command (e.g., add 2 3): ")
             if user_input.lower() == 'exit':
-                print("Exiting...")
+                logger.info("Exiting...")
                 break
             
             parts = user_input.split()
@@ -53,11 +67,11 @@ class Calculator:
                     operand1 = float(parts[1])
                     operand2 = float(parts[2])
                     result = self.execute(command_name, operand1, operand2)
-                    print("Result:", result)
+                    logger.info(f"Result: {result}")
                 except ValueError as e:
-                    print("Error:", e)
+                    logger.error(f"Error loading plugin {module_name}: {e}")
             else:
-                print("Invalid input format.")
+                logger.warning("Invalid input format.")
 
 if __name__ == "__main__":
     calculator = Calculator()

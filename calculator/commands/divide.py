@@ -1,6 +1,6 @@
 #Inheirits from the Command base class to implement the division operation via the execute method
 from .command import Command
-from utils.validator import Validator
+from ..utils.validator import Validator
 
 
 class Divide(Command):
